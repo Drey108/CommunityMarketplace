@@ -22,6 +22,7 @@ export default function ProductCard({ title, price }) {
           <TouchableOpacity style={styles.btn}>
             <Text style={styles.btnText}>Buy</Text>
           </TouchableOpacity>
+          {/* hello */}
         </View>
       </View>
     </TouchableOpacity>
