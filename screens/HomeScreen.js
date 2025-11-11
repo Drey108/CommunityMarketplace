@@ -1,12 +1,13 @@
 import React from "react";
-import { View, FlatList, StyleSheet, Text } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
+import { COLORS } from "../components/theme";
 
-const SAMPLE = Array.from({ length: 8 }).map((_, i) => ({
+const SAMPLE = Array.from({ length: 10 }).map((_, i) => ({
   id: String(i + 1),
-  title: `Product ${i + 1}`,
-  price: `₹${(i + 1) * 250}`,
+  title: `Handmade Product ${i + 1}`,
+  price: `₹${(i + 1) * 199}`,
 }));
 
 export default function HomeScreen() {
@@ -15,17 +16,18 @@ export default function HomeScreen() {
       <Header title="Community Marketplace" />
       <FlatList
         data={SAMPLE}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(i) => i.id}
         contentContainerStyle={styles.list}
         numColumns={2}
+        columnWrapperStyle={{ justifyContent: "space-between" }}
         renderItem={({ item }) => <ProductCard {...item} />}
-        ListFooterComponent={<View style={{ height: 32 }} />}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f5f5f7" },
-  list: { paddingHorizontal: 12, paddingTop: 12 },
+  container: { flex: 1, backgroundColor: COLORS.bg },
+  list: { padding: 12, paddingTop: 8, paddingBottom: 40 },
 });
